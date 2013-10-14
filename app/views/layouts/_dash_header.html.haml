@@ -1,0 +1,134 @@
+.navbar
+  %a.navbar-brand{:href => root_path}
+    Website
+  %ul.nav.navbar-nav
+    - if current_user.admin?
+      %li
+        = link_to "CMS path", admin_path
+      %li.dropdown
+        %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+          Page Content
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to "Manage", contents_path
+          %li
+            = link_to "New", new_content_path
+      %li.dropdown
+        %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+          FAQ Content
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to "Manage", questions_path
+          %li
+            = link_to "New Question", new_question_path
+      %li.dropdown
+        %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+          About Content
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to "Manage", about_sections_path
+          %li
+            = link_to "New Section", new_about_section_path
+      %li.dropdown
+        %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+          News Content
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to "Manage", posts_path
+          %li
+            = link_to "New Post", new_post_path
+      %li.dropdown
+        %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+          Attachments
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to "Manage", attachments_path
+          %li
+            = link_to "New File", new_attachment_path
+    
+    %li
+      = link_to "Dashboard", dashboard_path
+    %li.dropdown
+      %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+        Resources
+        %b.caret
+      %ul.dropdown-menu
+        - if current_user.label == "mentor" || current_user.label == "advisor" || current_user.admin? || current_user.label == "team member"
+          %li
+            = link_to "FAQs", "#"
+        - if current_user.label == "mentor" || current_user.label == "advisor" || current_user.admin?
+          %li
+            = link_to "Mentor Guidebook", "#"
+        - if current_user.admin? || current_user.label == "team member"
+          %li
+            = link_to "Providers", "#"
+        - if current_user.admin? || current_user.label == "team member"
+          %li
+            = link_to "Funding/Grants", "#"
+        - if current_user.admin? || current_user.label == "team member"
+          %li
+            = link_to "Clearing House", "#"
+    %li
+      = link_to "Calendar", "#"
+    %li.dropdown
+      %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+        Contact
+        %b.caret
+      %ul.dropdown-menu
+        %li
+          = link_to "Direct", "#"
+        %li
+          = link_to "Request for Expertise", "#"
+    -#
+      %li.dropdown
+        %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+          Dropdown on Click
+          %b.caret
+        %ul.dropdown-menu
+          %li
+            = link_to "Location", "#"
+          %li.divider
+          %li.dropdown-submenu
+            %a{:tabindex => "-1", :href => "#"}
+              Submenu
+              %b.caret
+            %ul.dropdown-menu
+              %li
+                %a{:tabindex => "-1", :href => "#"}
+                  Submenu Item
+              %li
+                %a{:tabindex => "-1", :href => "#"}
+                  Submenu Item
+              %li.dropdown-submenu
+                %a{:href => "#"}
+                  Sub-submenu
+                %ul.dropdown-menu
+                  %li
+                    = link_to "Sub-submenu Item", "#"
+                  %li
+                    = link_to "Sub-submenu Item 2", "#"
+  %ul.nav.pull-right
+    %li.dropdown
+      %a.dropdown-toggle{:href => "#", :data => {:toggle => "dropdown"}}
+        %span.normal-text
+          Logged in as
+        %span#username
+          = current_user.blank? ? "Guest" : current_user.email
+        %b.caret
+      %ul.dropdown-menu
+        - if current_user
+          %li
+            %a{:class => "logout", :href => "/logout"}
+              Log out
+          %li
+            %a{:class => "logout", :href => administration_account_settings_path}
+              Settings
+        - else
+          %li
+            %a{:class => "logout", :href => "/login"}
+              Log in

@@ -1,0 +1,26 @@
+%footer#footer
+  .cruft.cruft-lowerleft
+  .container
+    .row
+      .col-xs-4.footer-column.footer-large
+        .footer-entry
+          %h3
+            Events
+          = link_to "See full calendar &raquo;".html_safe, calendar_path
+      - @footer_events[0..3].each do |e|
+        .col-xs-2.footer-item.footer-column
+          .event
+            .date
+              .month
+                = DateTime.parse(e.start_time).strftime("%B")
+              .day
+                = DateTime.parse(e.start_time).strftime("%d")
+            .event-info
+              - if e.link.blank?
+                = e.name
+              - else
+                = link_to e.name, e.link
+      - (4-@footer_events.count).times do
+        .col-xs-2.footer-item.footer-column
+          &nbsp;
+  .cruft.cruft-lowerright

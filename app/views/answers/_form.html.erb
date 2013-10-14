@@ -1,0 +1,16 @@
+<%= simple_form_for(@answer) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :content %>
+    <a href='#' class='toHTML btn btn-default btn-xs'>HTML Mode</a>
+    <div style='height: 4px'></div>
+    <a data-toggle="modal" href="#attachments" class='btn btn-default btn-xs'>Add attachment</a>
+    <div style='height: 30px'></div>
+    <%= f.input :question_id, input_html: { value: @question.id }, as: "hidden" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

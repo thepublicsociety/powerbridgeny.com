@@ -1,0 +1,81 @@
+= render :partial => "layouts/header"
+
+#content-display
+  .photo-bg{class: "#{thisPage}-photo"}
+    .container
+      .row
+        #news
+          .col-sm-8
+            .articles
+              - @news.each do |n|
+                %section
+                  %header
+                    %h1
+                      = n.title
+                    .meta
+                      = n.created_at.strftime("%m.%d.%Y")
+                  .body
+                    = smart_truncate(n.content, "/article/#{n.id}", :words => 75).html_safe
+            
+          .col-sm-4
+            .news
+              %h2
+                Recent Developments
+              %ul.unstyled
+                - @news.each do |post|
+                  %li
+                    = link_to post.title, "/article/#{post.id}"
+            .social
+              %h2
+                = link_to "@PowerBridgeNY", "https://twitter.com/powerbridgeny"
+              %ul.unstyled
+                - if @tweets.empty?
+                  %li
+                    .tweet
+                      Nothing to display
+                    .date
+                      = time_ago_in_words(Time.now)
+                      ago
+                - @tweets.each do |t|
+                  %li
+                    .tweet
+                      = t.text.blank? ? "Error parsing Twitter feed" : t.text
+                    .tweet
+                      tweeted
+                      = time_ago_in_words(t.created_at) unless t.created_at.blank?
+                      - unless t.created_at.blank?
+                        ago
+= render partial: "layouts/footer"
+      
+:javascript
+  $(function(){
+  
+  	$("body").backstretch("/assets/home_bg.jpg");
+  
+  });
+-#
+  = render :partial => "layouts/header"
+  .container
+    .row
+      .col-lg-12
+        %h1
+          News
+        %article
+          %h2
+            Cleantech
+          - @cnews.each do |c|
+            %section
+              %h3
+                = c.title
+              .body
+                = c.content.html_safe unless c.content.blank?
+        
+        %article
+          %h2
+            Awardees
+          - @anews.each do |a|
+            %section
+              %h3
+                = a.title
+              .body
+                = a.content.html_safe unless a.content.blank?

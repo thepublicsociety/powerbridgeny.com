@@ -1,0 +1,26 @@
+Starter Rails 3.2.13 app template
+
+Gemfile:
+  gem 'therubyracer', :require => "v8"
+  gem 'jquery-rails'
+  gem 'haml'
+  gem 'sass'
+  gem 'devise'
+  gem 'cancan'
+  gem 'paperclip'
+  gem 'remotipart'
+  gem 'will_paginate'
+  gem 'bootstrap-will_paginate'
+  gem 'nested_form'
+  gem 'simple_form'
+  #gem 'rails_bootstrap_navbar'
+  gem 'active_attr'
+  gem 'american_date'
+  gem "better_errors"
+  gem 'annotate'
+  gem 'bullet'
+  gem 'debugger'
+  gem 'meta_request','0.2.1'
+  gem 'quiet_assets'
+
+Bootstrap, authentication/authorization, CMS, content model, mailer, helpers, routes, etc.

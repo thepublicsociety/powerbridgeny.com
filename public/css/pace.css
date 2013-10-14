@@ -1,0 +1,12 @@
+.pace .pace-progress {
+  background: #000;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 4px;
+}
+
+.pace-inactive {
+  display: none;
+}

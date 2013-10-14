@@ -1,0 +1,771 @@
+@import "fonts"
+@import "settings"
+@import "calendar"
+
+$dark: #0c1421
+$darktext: #1d272b
+$orangey: #f89e2f
+$bluish: #548eb3
+$lightgray: #bdbdbd
+$darkgray: #3b3b3b
+
+header#header
+  overflow: hidden
+  position: relative
+  .header-column
+    border-left: 1px solid rgba(255,255,255,0.9)
+    position: relative
+    background-color: rgba(12,20,33,0.9)
+    &:last-child
+      border-right: 1px solid rgba(255,255,255,0.9)
+  a
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: block
+  #logo
+    width: 132px
+    height: 64px
+    display: block
+    text-indent: -9999px
+    background-image: url(/assets/pb_logo.png)
+    position: absolute
+    bottom: 15px
+    left: 15px
+  .nav-item
+    &.on
+      background-color: rgba(255,255,255,0.9)
+      a, a:hover
+        color: $darktext
+    a
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      display: block
+      line-height: 1
+      font-family: goth-reg
+      span
+        position: absolute
+        bottom: 15px
+        left: 15px
+    a,
+    a:hover
+      color: white
+    a:hover
+      font-family: goth-med
+
+footer#footer
+  overflow: hidden
+  position: fixed
+  bottom: 0
+  width: 100%
+  .footer-column
+    background-color: rgba(12,20,33,0.9)
+    border-left: 1px solid rgba(255,255,255,0.9)
+    position: relative
+    font-size: 10px
+    color: white
+    &:last-child
+      border-right: 1px solid rgba(255,255,255,0.9)
+  .footer-entry,
+  .event
+    position: absolute
+    top: 15px
+  .footer-entry
+    a
+      opacity: .7
+  h3
+    font-family: goth-reg
+    font-size: 14px
+    color: white
+    line-height: 1
+    margin-top: 0
+    margin-bottom: 5px
+  a,
+  a:hover
+    color: white
+    font-family: goth-reg
+  .footer-column
+    .event
+      overflow: hidden
+      .date
+        float: left
+        margin-right: 5px
+        min-width: 45px
+        .month
+        .day
+          width: 32px
+          height: 32px
+          display: table-cell
+          vertical-align: middle
+          text-align: center
+          font-size: 24px
+          font-family: klavika
+          line-height: 1
+          background-color: $orangey
+      .event-info
+        padding-top: 13px
+        display: table-cell
+        vertical-align: middle
+        min-height: 45px
+        max-width: 80px
+        float: left
+
+#content-display
+  padding-bottom: 86px
+
+.photo-bg.index-photo
+  min-height: 482px
+
+.photo-bg
+  width: 100%
+  border-top: 1px solid rgba(255,255,255,0.9)
+  border-bottom: 1px solid rgba(255,255,255,0.9)
+  h1
+    font-size: 51px
+    font-family: soho-bold
+    color: white
+    min-width: 70%
+    max-width: 850px
+    line-height: 1.35
+    margin: 25px 0
+  .btn-orangey
+    background-color: $orangey
+    color: white
+    font-size: 31px
+    font-family: goth-bold
+    border-radius: 0
+    text-transform: uppercase
+    padding: 10px 14px 13px
+    line-height: 1
+    margin-bottom: 40px
+.text-blocks
+  background: white
+  overflow: hidden
+  width: 100%
+  font-family: sans-reg
+  font-size: 12px
+  line-height: 1.65
+  color: #000
+  padding-bottom: 20px
+  min-height: 220px
+  h2
+    color: $orangey
+    font-size: 17px
+    font-family: soho-med
+  li
+    padding-left: 30px
+    margin-bottom: 10px
+    .text
+      line-height: 1
+      color: $darkgray
+    a
+      color: $bluish
+    .meta
+      color: $lightgray
+      line-height: 1.65
+  li.twitter
+    background: transparent url(/assets/feed_twitter_icon.png) left 5px no-repeat
+    .text
+      line-height: 1.35
+  li.news
+    background: transparent url(/assets/feed_news_icon.png) left 5px no-repeat
+
+/*#header, #footer, .logo, .nav-item, .main-footer-item, .footer-item
+  min-height: 90px*/
+header#header, .logo, .nav-item
+  height: 212px
+header#header.short, .logo.short, .nav-item.short
+  height: 112px
+footer#footer, .footer-large, .footer-item
+  height: 86px
+
+.about-photo
+  .container,
+  .row,
+  #accordion
+    height: 100%
+#accordion
+  position: relative
+  .select-column
+    height: 100%
+    position: relative
+    border-left: 1px solid rgba(255,255,255,0.9)
+    h2
+      color: white
+      font-size: 16px
+      font-family: goth-reg
+      margin-top: 28px
+      margin-bottom: 20px
+    .desc
+      p
+        color: white
+        line-height: 1.85
+        font-family: sans-light
+        padding: 0 40px 0 0
+    a.col-select-tab
+      display: block
+      position: absolute
+      top: 0px
+      width: 100%
+      height: 100%
+    &.pb-col
+      background-color: rgba(#e7942f, 0.85)
+      display: none
+      a.col-select-tab
+        background-image: url(/assets/accordion_tab_right.png)
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-repeat: no-repeat
+        background-position: right 25px
+    &.ins-col
+      background-color: rgba(#de752e, 0.85)
+      a.col-select-tab
+        background-image: url(/assets/accordion_tab_right.png)
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-repeat: no-repeat
+        background-position: right 25px
+      &.onRight
+        a.col-select-tab
+          background-image: url(/assets/accordion_tab_left.png)
+          top: 0
+          left: 0
+          width: 100%
+          height: 100%
+          background-repeat: no-repeat
+          background-position: left 25px
+    &.faq-col
+      background-color: rgba(#df3933, 0.85)
+      border-right: 1px solid rgba(255,255,255,0.9)
+      &.active
+        position: absolute
+        right: 0
+      a.col-select-tab
+        background-image: url(/assets/accordion_tab_left.png)
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        background-repeat: no-repeat
+        background-position: left 25px
+  .display-column
+    height: 100%
+    background: rgba(255,255,255,0.9)
+    h2
+      color: black
+      font-size: 16px
+      font-family: goth-med
+      margin-top: 28px
+      margin-bottom: 20px
+    .body
+      line-height: 1.85
+    .faq-display
+      .questions
+        .query
+          font-family: sans-bold
+          margin-bottom: 5px
+        .answers
+          margin-bottom: 35px
+          ul
+            list-style: disc
+            padding: 0 0 0 15px
+    &.ins-display-col,
+    &.faq-display-col
+      width: 0
+      padding: 0
+  .ins-display
+    .ins-cols
+      float: left
+      width: 50%
+    section
+      margin-bottom: 40px
+      overflow: hidden
+      .institution-logo
+        margin-bottom: 20px
+      .body
+        float: left
+        width: 90%
+        padding-left: 0px
+      img
+        max-width: 100%
+  .pb-display
+    .judges,
+    .mentors
+      float: left
+      width: 100%
+      overflow: hidden
+      li
+        margin-bottom: 30px
+        float: left
+        width: 50%
+      .title
+        font-family: sans-italic
+
+.news-photo
+  .container,
+  .row,
+  #news
+    height: 100%
+#news
+  height: 100%
+  background: rgba(255,255,255,0.9)
+  h1
+    color: black
+    font-size: 16px
+    font-family: goth-med
+    margin-top: 28px
+    margin-bottom: 10px
+  .meta
+    margin-bottom: 0px
+    float: left
+  .sharing
+    float: right
+    margin-bottom: 20px
+    overflow: hidden
+    span
+      display: block
+      float: left
+      padding-top: 2px
+    a
+      display: block
+      height: 22px
+      width: 22px
+      background-image: url(/assets/share_icons.png)
+      background-repeat: no-repeat
+      float: left
+      margin-left: 10px
+    a.tShare
+      background-position: 0 0
+    a.fShare
+      background-position: -32px 0
+    a.lShare
+      background-position: -61px 0
+  h2
+    color: black
+    font-size: 16px
+    font-family: goth-med
+    margin-top: 28px
+    margin-bottom: 20px
+  .body
+    clear: both
+    line-height: 1.85
+    img
+      width: 100%
+    p
+      margin-bottom: 20px
+  .news, .social
+    margin-left: 20px
+    li
+      margin-bottom: 20px
+    a
+      color: $orangey
+  .news
+    margin-bottom: 40px
+  .social
+    h2
+      padding-left: 40px
+      background: transparent url(/assets/twitter_bird.png) left center no-repeat
+      line-height: 24px
+    li
+      .date
+        color: $lightgray
+        font-size: 12px
+  .articles
+    section
+      padding: 0px 0 20px
+      border-bottom: 1px solid $lightgray
+      .meta
+        margin-bottom: 30px
+      a
+        color: $orangey
+    img
+      max-width: 150px
+
+.calendar-photo
+  min-height: 844px
+  .container,
+  .row
+    height: 100%
+#list
+  background: rgba(255,255,255,0.9)
+  padding-bottom: 86px
+  li
+    padding-bottom: 20px
+    margin-bottom: 20px
+    border-bottom: 1px solid $lightgray
+#calendar
+  padding-bottom: 86px
+  background: rgba(255,255,255,0.9)
+  h2
+    color: black
+    font-size: 16px
+    font-family: goth-med
+    margin-top: 0
+    padding-top: 28px
+    margin-bottom: 10px
+    text-align: center
+    width: 200px
+    float: right
+    .previous-month
+      text-indent: -9999px
+      display: block
+      width: 7px
+      height: 13px
+      background: url(/assets/left_right_arrows.png) 0 0 no-repeat
+      float: left
+      margin-top: 2px
+    .next-month
+      text-indent: -9999px
+      display: block
+      width: 7px
+      height: 13px
+      background: url(/assets/left_right_arrows.png) -8px 0 no-repeat
+      float: right
+      margin-top: 2px
+
+.contact-photo
+  .container,
+  .row,
+  #contactAccordion
+    height: 100%
+#contactAccordion
+  height: 100%
+  .display-column
+    background: rgba(255,255,255,0.9)
+    height: 100%
+  .select-column
+    height: 100%
+    position: relative
+    h2
+      color: white
+      font-size: 16px
+      font-family: goth-reg
+      margin-top: 28px
+      margin-bottom: 20px
+    .desc
+      p
+        color: white
+        line-height: 1.85
+        font-family: sans-light
+        padding: 0 40px 0 0
+    a.col-select-tab
+      display: block
+      position: absolute
+      top: 0px
+      width: 100%
+      height: 100%
+  h2
+    color: black
+    font-size: 16px
+    font-family: goth-med
+    margin-top: 28px
+    margin-bottom: 10px
+  .contact-tab,
+  .directory-display
+    display: none
+  .contact-tab
+    background-color: rgba(#e7942f, 0.85)
+    border-left: 1px solid rgba(255,255,255,0.9)
+    a.col-select-tab
+      background-image: url(/assets/accordion_tab_right.png)
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-repeat: no-repeat
+      background-position: right 25px
+  .directory-tab
+    background-color: rgba(#de752e, 0.85)
+    border-right: 1px solid rgba(255,255,255,0.9)
+    a.col-select-tab
+      background-image: url(/assets/accordion_tab_left.png)
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      background-repeat: no-repeat
+      background-position: left 25px
+
+  .email
+    .clear
+      height: 20px
+    label
+      color: $orangey
+      font-size: 16px
+      font-family: goth-med
+      float: left
+      width: 100px
+    input,
+    textarea
+      float: right
+      background: #c3c3c3
+      border: none
+      box-shadow: 0
+      border-radius: 0
+      width: 75%
+      padding: 5px 10px
+    textarea
+      height: 225px
+      resize: none
+    input[type=submit]
+      float: right
+      background: transparent url(/assets/send_button.png) no-repeat
+      height: 12px
+      width: 51px
+      text-indent: -9999px
+      margin-bottom: 10px
+    .select
+      label
+        width: 200px
+    input#from
+      font-style: italic
+    .dd-container
+      float: right
+      label,
+      a
+        color: #000
+        font-size: 14px
+        font-family: sans-reg
+    .dd-select
+      border: 0
+      background: #c3c3c3 !important
+    .dd-selected
+      padding: 4px 10px
+      height: 25px
+  .newsletter
+    .clear
+      height: 20px
+    .email
+      label
+        width: 50px
+    input[type=submit]
+      float: right
+      background: transparent url(/assets/submit_button.png) no-repeat
+      height: 12px
+      width: 69px
+      text-indent: -9999px
+  .apply
+    padding-top: 40px
+    p
+      line-height: 1.85
+      margin-bottom: 20px
+    a
+      float: right
+      background: transparent url(/assets/apply_button.png) no-repeat
+      height: 12px
+      width: 59px
+      text-indent: -9999px
+  .dir-listing
+    overflow: hidden
+    li
+      float: left
+      width: 33%
+      margin-bottom: 40px
+      .name
+        font-size: 16px
+        font-family: goth-med
+      .email
+        a
+          color: $orangey
+  .group-name
+    label
+      color: $orangey
+      font-size: 16px
+      font-family: goth-med
+      float: none
+      width: auto
+    .dd-container
+      float: right
+      label,
+      a
+        color: #000
+        font-size: 14px
+        font-family: sans-reg
+    .dd-select
+      border: 0
+      background: #c3c3c3 !important
+    .dd-selected
+      padding: 4px 10px
+      height: 25px
+    .group_checks
+      clear: both
+      padding-top: 5px
+    .group_check
+      float: left
+      width: 50%
+      overflow: hidden
+      margin-bottom: 10px
+      position: relative
+      left: -10px
+      label
+        text-indent: -9999px
+        width: 16px
+        height: 16px
+        background-image: url(/assets/group_checkbox.png)
+        background-repeat: no-repeat
+        background-position: 0 -16px
+        position: relative
+        top: 8px
+        left: 10px
+        &.checked
+          background-position: 0 0
+      input
+        visibility: hidden
+.joinPB
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  background: $orangey
+  border-bottom: 1px solid rgba(255,255,255, 0.9)
+  text-align: center
+  color: white !important
+  font-size: 16px
+  font-family: goth-bold
+  text-transform: uppercase
+  padding: 5px
+  height: 30px !important
+      
+.photo-bg.index-photo.reduce
+  min-height: 260px
+  h1
+    font-size: 30px
+#accordion .display-column .faq-display .questions .answers
+  p
+    line-height: 1.85
+#news .article, .body
+  a
+    color: $orangey
+footer#footer .footer-column .event .event-info
+  a
+    font-size: 10px
+    font-family: sans-reg
+.select-column:hover
+  h2
+    font-family: goth-med !important
+.newsletter
+  p
+    margin: 0
+#contactAccordion .email .dd-container label, #contactAccordion .email .dd-container a
+  margin-bottom: 0
+  
+@media(max-width: 1280px)
+  .photo-bg.index-photo
+    min-height: 260px
+    h1
+      font-size: 30px
+@media(max-width: 640px)
+  header#header .nav-item a span
+    left: 10px
+  header#header #logo
+    background-image: url(/assets/mobile_logo.png)
+    width: 76px
+    height: 37px
+  #accordion .display-column
+    .faq-display
+      h2
+        padding-top: 0
+  #accordion .display-column.ins-display-col
+    margin-bottom: 0
+  #accordion .ins-display section:last-child
+    margin-bottom: 0
+  .pages-article
+    .article
+      border-bottom: 1px solid $lightgray
+      padding-bottom: 20px
+  header#header, .logo, .nav-item
+    height: 112px
+  .nav-item
+    font-size: 12px
+  .text-blocks
+    height: auto !important
+  #content-display
+    padding-bottom: 0px
+  footer#footer
+    position: static
+    display: none !important
+  footer#footer, .footer-large, .footer-item
+    height: 125px
+  .select-column
+    display: none
+  .display-column
+    display: block
+  #accordion, #contactAccordion, #news
+    .display-column h2, h1
+      margin-top: 0
+      padding-top: 28px
+  .about-photo, .contact-photo, .news-photo, .article-photo
+    background: rgba(255,255,255,0.9)
+    height: auto !important
+    border: none
+  #news
+    background: transparent
+  #accordion , #contactAccordion
+    .display-column.ins-display-col,
+    .display-column.faq-display-col,
+    .display-column
+      background: transparent
+      width: auto
+      padding: 0 15px
+  #calendar
+    display: none
+  #list
+    display: block
+  #contactAccordion .directory-display
+    display: block
+  #contactAccordion .dir-listing li
+    width: 50%
+  .joinPB
+    font-size: 15px
+    height: 45px
+  .viewSel
+    visibility: hidden
+    height: 0px
+  #contactAccordion .email input, #contactAccordion .email textarea
+    width: 100%
+  #accordion .pb-display .judges li, #accordion .pb-display .mentors li
+    width: 100%
+  .joinPB
+    font-size: 10px
+@media(max-width: 360px)
+  .photo-bg.index-photo
+    h1
+      font-size: 20px
+    &.reduce
+      h1
+        font-size: 20px
+  .photo-bg .btn-orangey
+    font-size: 15px
+  header#header, .logo, .nav-item
+    height: 85px
+    &.short
+      height: 85px
+  .nav-item
+    font-size: 10px
+    a
+      width: 100%
+      text-align: center
+  nav
+    .col-xs-2
+      padding: 0
+  #accordion .display-column.ins-display-col, #accordion .display-column.faq-display-col, #accordion .display-column, #contactAccordion .display-column.ins-display-col, #contactAccordion .display-column.faq-display-col, #contactAccordion .display-column
+    margin-bottom: 40px
+    clear: both
+  #accordion .ins-display .ins-cols
+    float: none
+    width: 100%
+  #contactAccordion .dir-listing li
+    width: 100%
+
+#sortable
+  .item
+    cursor: row-resize

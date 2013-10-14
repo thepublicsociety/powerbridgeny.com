@@ -1,0 +1,48 @@
+= render :partial => "layouts/header"
+
+#content-display
+  .photo-bg{class: "#{thisPage}-photo"}
+    .container
+      .row
+        .col-lg-12
+          %h1
+            PowerBridgeNY is a pathway to the future designed to produce the scalable, clean energy solutions that will power the next generation.
+          %a.btn.btn-orangey{href: "https://ctv.fluidreview.com/"}
+            apply to join us
+  .text-blocks
+    .container
+      .row
+        .col-sm-4
+          %h2
+            What happens tomorrow&hellip;
+          = Content.find(1).body.html_safe unless Content.find_by_id(1).blank?
+        .col-sm-8
+          %h2
+            Will be determined by what we do today
+          %ul.unstyled
+            - @tweets.each do |t|
+              %li.twitter
+                .text
+                  = link_to "@powerbridgeny:", "https://twitter.com/powerbridgeny", target: "_blank"
+                  = t.text
+                .meta
+                  tweeted
+                  = time_ago_in_words(t.created_at)
+                  ago
+            
+            %li.news
+              .text
+                = link_to @post.title, "/article/#{@post.id.to_s}"
+              .meta
+                posted
+                = time_ago_in_words(@post.created_at)
+                ago in News
+
+= render partial: "layouts/footer"
+      
+:javascript
+  $(function(){
+  
+  	$("body").backstretch("/assets/home_bg.jpg");
+  
+  });

@@ -1,0 +1,28 @@
+%header#header
+  .cruft.cruft-upperleft
+  .container
+    .row
+      %nav
+        .col-xs-4.logo.header-column
+          %a{href: root_path}
+            #logo
+              PowerBridgeNY
+        .col-xs-2.nav-item.header-column{class: thisPage == "about" ? "on" : "not-on"}
+          %a.header-nav-link{href: about_path, title: "About"}
+            %span
+              About
+        .col-xs-2.nav-item.header-column{class: (thisPage == "news" || thisPage == "article") ? "on" : "not-on"}
+          %a.header-nav-link{href: news_path, title: "News"}
+            %span
+              News
+        .col-xs-2.nav-item.header-column{class: thisPage == "calendar" ? "on" : "not-on"}
+          %a.header-nav-link{href: calendar_path, title: "Calendar"}
+            %span
+              Calendar
+        .col-xs-2.nav-item.header-column{class: thisPage == "contact" ? "on" : "not-on"}
+          %a.header-nav-link{href: "/contact", title: "Contact"}
+            %span
+              Contact
+          - if thisPage != "index"
+            = link_to "apply to join us", "https://ctv.fluidreview.com/", class: "joinPB"
+  .cruft.cruft-upperright

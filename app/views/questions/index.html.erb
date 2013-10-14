@@ -1,0 +1,58 @@
+<%= render :partial => "layouts/admin_header" %>
+<h1>Listing questions</h1>
+
+<table class='table' id='sortable' data-update_url='<%= sort_questions_path %>'>
+  <tr>
+    <th>Title</th>
+    <!--<th>Content</th>-->
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @questions.each do |question| %>
+  <tr class='item' data-item_id='<%= question.id %>'>
+    <td><%= question.title %></td>
+    <!--<td><%= question.content.blank? ? "" : question.content.html_safe %></td>-->
+    <td><%= link_to 'Edit Answer', edit_answer_path(question.answers.first) %></td>
+    <td><%= link_to 'Edit', edit_question_path(question) %></td>
+    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Question', new_question_path %>
+
+<%= link_to 'Update Order', "#", :class => "orderFaqs btn btn-default", style: "float: right;" %>
+
+<script>
+  $(function(){
+  
+  	$(".vAns").click(function(e){
+  		var q = $(this).data("q");
+  		$(".q-"+q).show();
+  		return false;
+  	});
+  	
+  	$(".aAcc").click(function(e){
+  		var q = $(this).data("q");
+  		var a = $(this).data("a");
+  		var link = $(this)
+  		$.post("/accept-answer", {question: q, answer: a}, function(){$(link).css("visibility", "hidden");});
+  		return false;
+  	});
+  	
+  	$(".orderFaqs").click(function(e){
+  		var order = [];
+  		$(".item").each(function(idx, el){
+  			order.push($(el).data("item_id"));
+  		});
+  		$.post('<%= sort_questions_path %>', {order: order.join(",")}, function(){alert("Updated");});
+      return false;
+  	});
+  
+  });
+</script>

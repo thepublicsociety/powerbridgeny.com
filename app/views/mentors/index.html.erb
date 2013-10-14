@@ -1,0 +1,30 @@
+<%= render :partial => "layouts/admin_header" %>
+<h1>Listing mentors</h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Organization</th>
+    <th>Sector</th>
+    <th>Account</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @mentors.each do |mentor| %>
+  <tr>
+    <td><%= mentor.name %></td>
+    <td><%= mentor.title %></td>
+    <td><%= mentor.organization %></td>
+    <td><%= mentor.sector %></td>
+    <td><%= mentor.user.blank? ? "None" : mentor.user.email %></td>
+    <td><%= link_to 'Edit', edit_mentor_path(mentor) %></td>
+    <td><%= link_to 'Destroy', mentor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New mentor', new_mentor_path %>

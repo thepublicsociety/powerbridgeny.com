@@ -1,0 +1,186 @@
+= render :partial => "layouts/header"
+
+#content-display
+  .photo-bg{class: "#{thisPage}-photo"}
+    .container
+      .row
+        #contactAccordion
+          .col-sm-2.contact-tab.select-column
+            %a.contact.col-select-tab{href: "#contact", data: {col: "contact-display"}}
+            %h2
+              Contact Us
+            .desc
+              = Content.find(6).body.html_safe unless Content.find_by_id(6).blank?
+          .col-sm-10.contact-display.display-column.open{data: {select: "contact-tab"}}
+            %h2
+              Contact Us
+            .row
+              .col-sm-7
+                .email
+                  %h2
+                    Email
+                  = simple_form_for @message, :url => email_path do |f|
+                    .clear
+                    .select
+                      = label_tag "email_select", "Select Contact"
+                      = select_tag("email_select", options_from_collection_for_select(@emails, "email", "organization"), prompt: "Select Contact")
+                    .clear
+                    = label_tag "From"
+                    = text_field_tag "from", "Email address here..."
+                    .clear
+                    = label_tag "email", "To"
+                    = text_field_tag "email"
+                    .clear
+                    = label_tag "Subject"
+                    = text_field_tag "subject"
+                    .clear
+                    = f.input :body, :as => "text", :label => "Message"
+                    .clear
+                    = f.button :submit, "Submit"
+              .col-sm-5
+                .newsletter
+                  %h2
+                    Newsletter
+                  %p
+                    Sign up for our mailing list to receive updates on events and important deadlines
+                  = simple_form_for(@newsletter) do |f|
+                    .clear
+                    = f.input :email, :label => "Email"
+                    .clear
+                    -#
+                      .group-name
+                        = f.label :group_name, "Select Category"
+                        .group_checks
+                          - ["Advisors/Mentors", "Researchers", "Events", "Investors"].each do |group|
+                            .group_check
+                              = label_tag "group_check_#{group}"
+                              = check_box_tag "group_check_#{group}", group, false
+                              = group
+                        
+                        = f.hidden_field :group_name
+                        .clear
+                    = f.button :submit
+                .apply
+                  %h2
+                    = Content.find(7).title unless Content.find_by_id(7).blank?
+                  = Content.find(7).body.html_safe unless Content.find_by_id(7).blank?
+                  = link_to "", "https://ctv.fluidreview.com/"
+          .col-sm-2.directory-tab.select-column
+            %a.directory.col-select-tab{href: "#directory", data: {col: "directory-display"}}
+            %h2
+              Directory
+            .desc
+              = Content.find(5).body.html_safe unless Content.find_by_id(5).blank?
+          
+          .col-sm-10.directory-display.display-column{data: {select: "directory-tab"}}
+            %h2
+              Directory
+            %ul.unstyled.dir-listing
+              - @emails.each do |e|
+                %li
+                  .name
+                    = e.name
+                  .org
+                    = e.organization
+                  .email
+                    = link_to e.email, "mailto:#{e.email}"
+            
+= render partial: "layouts/footer"
+      
+:javascript
+  $(function(){
+  
+  	$("body").backstretch("/assets/home_bg.jpg");
+  	$("#email_select").ddslick({
+      width: ($(window).width() < 481 ? "100%" : ($("form#new_message").width() - $(".select label").outerWidth() - 1)),
+      onSelected: function(data){
+        $("input#email").val(data.selectedData.value);
+        if(data.selectedData.text.indexOf("General") != -1){
+        	$("input#subject").val("Re: General Information");
+        } else if(data.selectedData.text.indexOf("Interested") != -1){
+        	$("input#subject").val("Re: Advisor/Mentor Interest");
+        }
+      }
+    });
+    $("#group_name_select").ddslick({
+      width: ($(window).width() < 481 ? "100%" : ($("form#new_subscription").width() - $(".group-name label").outerWidth() - 1)),
+      onSelected: function(data){
+        $("input#subscription_group_name").val(data.selectedData.value);
+      }
+    });
+    $("input#from").focus(function(){
+    	if($(this).val() == "Email address here..."){
+    		$(this).val("").css("font-style", "normal");
+    	}
+    }).blur(function(){
+    	if($(this).val() == ""){
+    		$(this).val("Email address here...").css("font-style", "italic");
+    	}
+    });
+    
+    $(".group_check label").click(function(e){
+      $(this).toggleClass("checked");
+    	var input = $("input#subscription_group_name");
+    	var checked = [];
+    	$(".group_check label.checked").each(function(idx, el){
+    		checked.push($(el).next().val());
+    	});
+    	$(input).val(checked.join(","));
+    });
+  });
+-#
+  = render :partial => "layouts/header"
+  .container
+    .row
+      .col-lg-12
+        %h1
+          About
+        %article
+          %h2
+            Powerbridge
+          - @pbabout.each do |pb|
+            %section
+              %h3
+                = pb.title
+              .body
+                = pb.content.html_safe unless pb.content.blank?
+        
+        %article
+          %h2
+            Institutions
+          - @inabout.each do |i|
+            %section
+              %h3
+                = i.title
+              .body
+                = i.content.html_safe unless i.content.blank?
+
+-#
+  = render :partial => "layouts/header"
+  .container
+    .row
+      .col-lg-6
+        %h1
+          Direct
+        .form.mail-form
+          = simple_form_for @message, :url => email_path do |f|
+            = label_tag "From"
+            = text_field_tag "from"
+            .clear
+            = label_tag "email", "To"
+            = select_tag("email", options_from_collection_for_select(@emails, "email", "name"), :prompt => "Select Account")
+            .clear
+            = label_tag "Subject"
+            = text_field_tag "subject"
+            = f.input :body, :as => "text", :label => "Message"
+            = f.button :submit, "Submit"
+      .col-lg-6
+        %h1
+          Mailing List
+        .form.maillist-form
+          = simple_form_for(@newsletter) do |f|
+            = f.input :fname, :label => "First name"
+            = f.input :lname, :label => "Last name"
+            = f.input :email, :label => "Email address"
+            = f.button :submit
+      

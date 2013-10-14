@@ -1,0 +1,30 @@
+<%= render :partial => "layouts/admin_header" %>
+<h1>Listing judges</h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Title</th>
+    <th>Organization</th>
+    <th>Sector</th>
+    <th>Account</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @judges.each do |judge| %>
+  <tr>
+    <td><%= judge.name %></td>
+    <td><%= judge.title %></td>
+    <td><%= judge.organization %></td>
+    <td><%= judge.sector %></td>
+    <td><%= judge.user.blank? ? "None" : judge.user.email %></td>
+    <td><%= link_to 'Edit', edit_judge_path(judge) %></td>
+    <td><%= link_to 'Destroy', judge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Judge', new_judge_path %>

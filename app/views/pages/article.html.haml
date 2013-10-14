@@ -1,0 +1,59 @@
+= render :partial => "layouts/header"
+
+#content-display
+  .photo-bg{class: "news-photo"}
+    .container
+      .row
+        #news
+          .col-sm-8
+            .article
+              %header
+                %h1
+                  = @post.title
+                .meta
+                  = @post.created_at.strftime("%m.%d.%Y")
+                .sharing
+                  %span
+                    Share
+                  %a{href: "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fpowerbridgeny.com%2Farticle%2F#{@post.id.to_s}&text=#{URI::encode(@post.title)}&url=http%3A%2F%2Fpowerbridgeny.com%2Farticle%2F#{@post.id.to_s}&via=PowerBridgeNY", class: "tShare", target: "_blank"}
+                  %a{href: "https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fpowerbridgeny.com%2Farticle%2F#{@post.id.to_s}", class: "fShare", target: "_blank"}
+                  %a{href: "http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fpowerbridgeny.com%2Farticle%2F#{@post.id.to_s}&title=#{URI::encode(@post.title)}&summary=#{@post.content.gsub(/<\/?[^>]+>/, '')[0..100]}&source=http%3A%2F%2Fpowerbridgeny.com%2Farticle%2F#{@post.id.to_s}", class: "lShare", target: "_blank"}
+              .body
+                = @post.content.html_safe unless @post.content.blank?
+            
+          .col-sm-4
+            .news
+              %h2
+                Recent Developments
+              %ul.unstyled
+                - @news.each do |post|
+                  %li
+                    = link_to post.title, "/article/#{post.id}"
+            .social
+              %h2
+                = link_to "@PowerBridgeNY", "https://twitter.com/powerbridgeny"
+              %ul.unstyled
+                - if @tweets.empty?
+                  %li
+                    .tweet
+                      Nothing to display
+                    .date
+                      = time_ago_in_words(Time.now)
+                      ago
+                - @tweets.each do |t|
+                  %li
+                    .tweet
+                      = t.text.blank? ? "Error parsing Twitter feed" : t.text
+                    .tweet
+                      tweeted
+                      = time_ago_in_words(t.created_at) unless t.created_at.blank?
+                      - unless t.created_at.blank?
+                        ago
+= render partial: "layouts/footer"
+      
+:javascript
+  $(function(){
+  
+  	$("body").backstretch("/assets/home_bg.jpg");
+  
+  });

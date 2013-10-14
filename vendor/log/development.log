@@ -1,0 +1,108 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Processing by PagesController#index as HTML
+  Rendered pages/index.html.haml within layouts/application (3.1ms)
+Compiled bootstrap.min.css  (0ms)  (pid 25134)
+Compiled bootstrap-responsive.min.css  (0ms)  (pid 25134)
+Compiled font-awesome.css  (236ms)  (pid 25134)
+Compiled bootstrap-datetimepicker.min.css  (0ms)  (pid 25134)
+Compiled style.css  (0ms)  (pid 25134)
+Compiled application.css  (290ms)  (pid 25134)
+Compiled rails.js  (0ms)  (pid 25134)
+Compiled nested_form.js  (0ms)  (pid 25134)
+Compiled bootstrap.min.js  (0ms)  (pid 25134)
+Compiled modernizr.js  (0ms)  (pid 25134)
+Compiled bootstrap-datetimepicker.min.js  (0ms)  (pid 25134)
+Compiled jquery.iframe-transport.js  (0ms)  (pid 25134)
+Compiled jquery.remotipart.js  (0ms)  (pid 25134)
+Compiled jquery.ddslick.js  (0ms)  (pid 25134)
+Compiled script.js  (0ms)  (pid 25134)
+Compiled application.js  (78ms)  (pid 25134)
+Compiled selectivizr-min.js  (0ms)  (pid 25134)
+Compiled css3-mediaqueries.js  (0ms)  (pid 25134)
+Completed 200 OK in 479ms (Views: 478.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /application.css - 200 OK (10ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /bootstrap.min.css - 200 OK (2ms)
+
+
+Started GET "/assets/bootstrap-responsive.min.css?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /bootstrap-responsive.min.css - 200 OK (2ms)
+
+
+Started GET "/assets/font-awesome.css?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /font-awesome.css - 200 OK (2ms)
+
+
+Started GET "/assets/rails.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /rails.js - 200 OK (1ms)
+
+
+Started GET "/assets/bootstrap-datetimepicker.min.css?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /bootstrap-datetimepicker.min.css - 200 OK (1ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /style.css - 200 OK (1ms)
+
+
+Started GET "/assets/nested_form.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /nested_form.js - 200 OK (1ms)
+
+
+Started GET "/assets/bootstrap.min.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /bootstrap.min.js - 200 OK (1ms)
+
+
+Started GET "/assets/modernizr.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /modernizr.js - 200 OK (2ms)
+
+
+Started GET "/assets/bootstrap-datetimepicker.min.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /bootstrap-datetimepicker.min.js - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.iframe-transport.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /jquery.iframe-transport.js - 200 OK (1ms)
+
+
+Started GET "/assets/jquery.remotipart.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /jquery.remotipart.js - 200 OK (3ms)
+
+
+Started GET "/assets/jquery.ddslick.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /jquery.ddslick.js - 200 OK (2ms)
+
+
+Started GET "/assets/script.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:25 -0700
+Served asset /script.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-05-26 18:06:26 -0700
+Served asset /application.js - 200 OK (14ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-05-26 18:06:39 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/bootstrap.min.css?body=1" for 127.0.0.1 at 2013-05-26 18:06:46 -0700
+Served asset /bootstrap.min.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/style.css?body=1" for 127.0.0.1 at 2013-05-26 18:06:53 -0700
+Served asset /style.css - 304 Not Modified (0ms)

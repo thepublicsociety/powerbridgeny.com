@@ -1,0 +1,18 @@
+= render :partial => "layouts/header"
+.container
+  .row
+    .col-lg-12
+      %h1
+        FAQ
+      %ul.unstyled.questions
+        - @questions.each do |q|
+          %li
+            .title
+              = q.title
+            .query
+              = q.content.blank? ? "" : q.content.html_safe
+            .answers
+              %ul.unstyled.answers
+                - q.answers.each do |a|
+                  %li
+                    = a.content.blank? ? "" : a.content.html_safe

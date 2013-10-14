@@ -1,0 +1,21 @@
+<%= simple_form_for(@about_section) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <a href='#' class='toHTML btn btn-default btn-xs'>HTML Mode</a>
+    <div style='height: 4px'></div>
+    <a data-toggle="modal" href="#attachments" class='btn btn-default btn-xs'>Add attachment</a>
+    <div style='height: 20px'></div>
+    <%= f.input :logo %>
+    <div style='height: 20px'></div>
+    <%= f.label :section %>
+    <%= f.collection_select :section, [["powerbridge", "Powerbridge"], ["institution", "Institution"]], :first, :last %>
+    <%= f.input :active %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

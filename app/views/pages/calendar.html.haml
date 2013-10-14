@@ -1,0 +1,98 @@
+= render :partial => "layouts/header"
+
+#content-display
+  .photo-bg{class: "#{thisPage}-photo"}
+    .container
+      .row
+        #list
+          .col-sm-12
+            %h2.viewSel{style: "padding-top: 5px"}
+              %a.calView{href: "#"}
+                Calendar View
+              \|
+              %a.active.listView{href: "#"}
+                List View
+            %ul.unstyled.clear
+              - @listevents.each do |e|
+                %li
+                  .title
+                    = e.name
+                  .date
+                    = DateTime.parse(e.start_time).strftime("%B %d, %Y")
+                    %br
+                    = DateTime.parse(e.start_time).strftime("%l:%M%P")
+                    \-
+                    = DateTime.parse(e.end_time.blank? ? e.start_time : e.end_time).strftime("%l:%M%P")
+                  .desc
+                    = e.description.html_safe unless e.description.blank?
+        #calendar
+          .col-sm-12
+            %h2.viewSel
+              %a.active.calView{href: "#"}
+                Calendar View
+              \|
+              %a.listView{href: "#"}
+                List View
+            = calendar @events, :class => "public_event_calendar table table-bordered" do |e|
+              .day_event_container
+                = link_to truncate(e.name, :length => 20).html_safe, "#", 'data-event_id' => e.id
+                .clear
+                .day_event_times
+                  = DateTime.parse(e.start_time).strftime("%l:%M%P")
+                  \-
+                  = DateTime.parse(e.end_time.blank? ? e.start_time : e.end_time).strftime("%l:%M%P")
+- @events.each do |e|
+  .day_event_details.temp-hidden{:id => "event_info_#{e.id}"}
+    .day_event_title
+      = e.name
+    .event_date_and_address_details
+      .day_event_date
+        = DateTime.parse(e.start_time).strftime("%A, %b %-d, %Y")
+      .day_event_times
+        = DateTime.parse(e.start_time).strftime("%l:%M%P")
+        \-
+        = DateTime.parse(e.start_time).strftime("%l:%M%P")
+      .day_event_address
+        = e.location.gsub(/__.*/, "") unless e.location.blank?
+        - if e.location && e.location.include?("__")
+          %br
+          = e.location.gsub(/.*__/, "") unless e.location.blank?
+    .day_event_description
+      = e.description.html_safe unless e.description.blank?
+    
+
+= render partial: "layouts/footer"
+      
+:javascript
+  $(function(){
+  
+  	$("body").backstretch("/assets/home_bg.jpg");
+    $("#list").mCustomScrollbar({
+    scrollInertia:150,
+    scrollButtons:{
+    enable:true
+    },
+    theme: "dark"
+    });
+    $(".calView").click(function(e){
+    	$("#list").hide();
+    	$("#calendar").show();
+    	return false;
+    });
+    $(".listView").click(function(e){
+    	$("#list").show();
+    	$("#calendar").hide();
+    	return false;
+    });
+  });
+-#
+  = render :partial => "layouts/header"
+  .container
+    .row
+      .col-lg-12
+        %h1
+          Calendar
+        #calendar
+          = calendar @google_events, :class => "public_event_calendar table table-bordered" do |e|
+            .event
+              = e.name

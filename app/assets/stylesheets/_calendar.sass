@@ -1,0 +1,152 @@
+#calendar
+  a
+    color: #000
+  table
+    border-width: 0
+    margin-bottom: 0
+    th
+      border-left: 0
+      position: relative
+      z-index: 0
+      font-weight: normal
+    tbody
+      tr
+        &:last-child
+          td
+            border-bottom: 0
+        td
+          position: relative
+  .public_event_calendar
+    top: 0
+    th:last-child
+      border-right: 0
+    td
+      height: 150px
+      max-height: 150px
+      width: 127px
+    .wday-0
+      border-left: 0
+    .week
+      td:last-child
+        border-right: 0
+  .today
+    background-color: #eee
+
+#calendar
+  .public_event_calendar
+    clear: both
+    .wday-0
+      border-left: 0
+    .events, .no-events
+      position: relative
+      .more_events, .less_events
+        position: absolute
+        bottom: 0
+        left: 8px
+      > div
+        position: relative
+        height: 167px
+        > div
+          position: absolute
+          top: -3px
+          left: 0
+          height: 140px
+          width: 127px
+          overflow: hidden
+          background: transparent
+    .no-events
+      .day_number
+        padding-right: 11px
+    .day_event_container
+      font-size: 11px
+      line-height: 14px
+      height: 30px
+      a
+        white-space: nowrap
+      .day_event_times
+        float: left
+      
+.day_event_details
+  position: absolute
+  top: 0
+  left: 0
+  background: white
+  width: 200px
+  padding: 10px
+  border: 1px solid #afb1b4
+
+.day_event_details:after, .day_event_details:before
+  right: 100%
+  border: solid transparent
+  content: " "
+  height: 0
+  width: 0
+  position: absolute
+  pointer-events: none
+.day_event_details:after
+  border-color: rgba(255, 255, 255, 0)
+  border-right-color: #ffffff
+  border-width: 5px
+  top: 15px
+  margin-top: -5px
+.day_event_details:before
+  border-color: rgba(175, 177, 180, 0)
+  border-right-color: #afb1b4
+  border-width: 6px
+  top: 15px
+  margin-top: -6px
+.day_event_details
+  font-size: 13px
+  line-height: 18px
+  .day_event_title
+    margin-bottom: 10px
+  .day_event_date
+  .day_event_times
+  .day_event_address
+    margin-bottom: 10px
+  .day_event_description
+    word-break: break-word
+  .day_event_save
+    margin-top: 5px
+.temp-hidden
+  display: none
+.pages-calendar
+  .photo-bg
+    border-bottom: none
+  footer#footer
+    border-top: 1px solid rgba(255,255,255,0.9)
+#calendar
+  .day_event_container,
+  .day_event_title
+    a
+      color: #f89e2f
+.day_event_title
+  color: #f89e2f
+
+#list
+  display: none
+.viewSel
+  font-size: 16px
+  float: left
+  a
+    color: #f89e2f
+    font-size: 16px
+    font-family: goth-med
+    margin-top: 0
+    padding-top: 28px
+    margin-bottom: 10px
+    &.active
+      color: #000
+#calendar
+  .viewSel
+    font-size: 16px
+    float: left
+    a
+      color: #f89e2f
+      font-size: 16px
+      font-family: goth-med
+      margin-top: 0
+      padding-top: 28px
+      margin-bottom: 10px
+      &.active
+        color: #000

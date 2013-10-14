@@ -1,0 +1,159 @@
+= render :partial => "layouts/header"
+
+#content-display
+  .photo-bg{class: "#{thisPage}-photo"}
+    .container
+      .row
+        #accordion
+          .col-sm-8.display-column.pb-display-col.open{data: {select: "pb-col"}}
+            .pb-display
+              %article
+                - @pbabout.each do |a|
+                  %section
+                    %h2
+                      = a.title
+                    .body
+                      = a.content.html_safe unless a.content.blank?
+              .judges
+                %h2
+                  Judges
+                %ul.unstyled
+                  - @judges.each do |j|
+                    %li
+                      .name
+                        = j.name
+                      .title
+                        = j.title
+                        %br
+                        = j.organization
+              -#
+                .mentors
+                  %h2
+                    Mentors
+                  %ul.unstyled
+                    - @mentors.each do |m|
+                      %li
+                        .name
+                          = m.name
+                        .title
+                          = m.title
+          .col-sm-2.select-column.pb-col
+            %a.powerbridge.col-select-tab{href: "#powerbridge", data: {col: "pb-display-col"}}
+            %h2
+              PowerBridgeNY
+            .desc
+              = Content.find(2).body.html_safe unless Content.find_by_id(2).blank?
+          
+          .col-sm-8.display-column.ins-display-col{data: {select: "ins-col"}}
+            .ins-display
+              %h2
+                Institutions
+              %article
+                .ins-cols
+                  - @inabout1.each do |a|
+                    %section
+                      .institution-logo
+                        = image_tag(a.logo.url) unless a.logo.blank?
+                      .body
+                        = a.content.html_safe unless a.content.blank?
+                .ins-cols
+                  - @inabout2.each do |a|
+                    %section
+                      .institution-logo
+                        = image_tag(a.logo.url) unless a.logo.blank?
+                      .body
+                        = a.content.html_safe unless a.content.blank?
+          .col-sm-2.select-column.ins-col.onRight
+            %a.institutions.col-select-tab{href: "#institutions", data: {col: "ins-display-col"}}
+            %h2
+              Institutions
+            .desc
+              = Content.find(3).body.html_safe unless Content.find_by_id(3).blank?
+          
+          .col-sm-8.display-column.faq-display-col{data: {select: "faq-col"}}
+            .faq-display
+              %h2
+                FAQ
+              %ul.unstyled.questions
+                - @questions.each do |q|
+                  %li
+                    .query
+                      = q.title
+                    .answers
+                      - q.answers.each do |a|
+                        = a.content.blank? ? "" : a.content.html_safe
+          .col-sm-2.select-column.faq-col
+            %a.faqs.col-select-tab{href: "#faqs", data: {col: "faq-display-col"}}
+            %h2
+              FAQ
+            .desc
+              = Content.find(4).body.html_safe unless Content.find_by_id(4).blank?
+          
+        -#
+          .col-lg-12
+            .panel-group#accordion
+              .panel.panel-default
+                .panel-heading
+                  %h4.panel-title
+                    %a.accordion-toggle{href: "#powerbridge", data: {toggle: "collapse", parent: "#accordion"}}
+                      PowerBridge
+                #powerbridge.panel-collapse.collapse.in.width
+                  .panel-body{style: "width: 500px"}
+                    %p
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  
+              .panel.panel-default
+                .panel-heading
+                  %h4.panel-title
+                    %a.accordion-toggle{href: "#institutions", data: {toggle: "collapse", parent: "#accordion"}}
+                      Institutions
+                #institutions.panel-collapse.collapse.width
+                  .panel-body{style: "width: 500px"}
+                    %p
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  
+              .panel.panel-default
+                .panel-heading
+                  %h4.panel-title
+                    %a.accordion-toggle{href: "#faq", data: {toggle: "collapse", parent: "#accordion"}}
+                      FAQ
+                #faq.panel-collapse.collapse.width
+                  .panel-body{style: "width: 500px"}
+                    %p
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          
+
+= render partial: "layouts/footer"
+      
+:javascript
+  $(function(){
+  
+  	$("body").backstretch("/assets/home_bg.jpg");
+  
+  });
+-#
+  = render :partial => "layouts/header"
+  .container
+    .row
+      .col-lg-12
+        %h1
+          About
+        %article
+          %h2
+            Powerbridge
+          - @pbabout.each do |pb|
+            %section
+              %h3
+                = pb.title
+              .body
+                = pb.content.html_safe unless pb.content.blank?
+        
+        %article
+          %h2
+            Institutions
+          - @inabout.each do |i|
+            %section
+              %h3
+                = i.title
+              .body
+                = i.content.html_safe unless i.content.blank?

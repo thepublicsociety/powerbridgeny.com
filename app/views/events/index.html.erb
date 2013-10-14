@@ -1,0 +1,28 @@
+<%= render :partial => "layouts/admin_header" %>
+<h1>Listing events</h1>
+
+<table class="table">
+  <tr>
+    <th>Event date</th>
+    <th>Event name</th>
+    <th>Event description</th>
+    <th>Shown in footer?</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= event.event_date.blank? ? "" : event.event_date.strftime("%m-%d-%Y") %></td>
+    <td><%= event.event_name %></td>
+    <td><%= event.event_description.blank? ? "" : event.event_description.html_safe %></td>
+    <td><%= event.in_footer? %></td>
+    <td><%= link_to 'Edit', edit_event_path(event) %></td>
+    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Event', new_event_path %>
