@@ -159,7 +159,7 @@ class PagesController < ApplicationController
     if Event.all.empty?
       @footer_events = []
     else
-      @footer_events = Event.find(:all, :conditions => ["in_footer=?", true], :order => "created_at asc", :limit => 4).sort_by{|event| event.event_date}
+      @footer_events = Event.find(:all, :conditions => ["in_footer=?", true], :order => "event_date asc", :limit => 4)
     end
     unless token.blank?
       oauth_yaml = YAML.load_file('google-api.yaml')

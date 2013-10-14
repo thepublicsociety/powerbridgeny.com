@@ -18,7 +18,7 @@
               .col-sm-7
                 .email
                   %h2
-                    Email
+                    Send us an email
                   = simple_form_for @message, :url => email_path do |f|
                     .clear
                     .select
@@ -40,7 +40,7 @@
               .col-sm-5
                 .newsletter
                   %h2
-                    Newsletter
+                    Sign up for our newsletter
                   %p
                     Sign up for our mailing list to receive updates on events and important deadlines
                   = simple_form_for(@newsletter) do |f|
@@ -64,7 +64,8 @@
                   %h2
                     = Content.find(7).title unless Content.find_by_id(7).blank?
                   = Content.find(7).body.html_safe unless Content.find_by_id(7).blank?
-                  = link_to "", "https://ctv.fluidreview.com/"
+                  -#
+                    = link_to "", "https://ctv.fluidreview.com/"
           .col-sm-2.directory-tab.select-column
             %a.directory.col-select-tab{href: "#directory", data: {col: "directory-display"}}
             %h2
